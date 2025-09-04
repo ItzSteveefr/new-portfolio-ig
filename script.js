@@ -1,24 +1,26 @@
 console.log("script.js is loaded ✅");
 
-/*import gsap from "gsap";
-import SplitText from "gsap/SplitText";*/
-
-gsap.registerPlugin(SplitText);
+// Make sure to include SplitType CDN in your HTML before this script:
+// <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/dist/split-type.min.js"></script>
 
 document.fonts.ready.then(() => {
-  function createSplitTexts(elements) {
+  function createSplitElements(elements) {
     const splits = {};
 
     elements.forEach(({ key, selector, type }) => {
-      const config = { type, mask: type };
+      const element = document.querySelector(selector);
+      if (!element) return;
 
-      if (type === "chars") config.charsClass = "char";
-      if (type === "lines") config.linesClass = "line";
-      splits[key] = SplitText.create(selector, config);
+      let split;
+      if (type === "chars") split = new SplitType(selector, { types: "chars" });
+      if (type === "lines") split = new SplitType(selector, { types: "lines" });
+
+      splits[key] = split;
     });
 
     return splits;
   }
+
   const splitElements = [
     { key: "logoChars", selector: ".preloader-logo h1", type: "chars" },
     { key: "footerLines", selector: ".preloader-footer p", type: "lines" },
@@ -28,7 +30,7 @@ document.fonts.ready.then(() => {
     { key: "btnLabels", selector: ".btn-label span", type: "lines" },
   ];
 
-  const splits = createSplitTexts(splitElements);
+  const splits = createSplitElements(splitElements);
 
   gsap.set([splits.logoChars.chars], { x: "100%" });
   gsap.set(
@@ -39,7 +41,7 @@ document.fonts.ready.then(() => {
       splits.heroFooterP.lines,
       splits.btnLabels.lines,
     ],
-    { y: "100%" },
+    { y: "100%" }
   );
   gsap.set(".btn-icon", { clipPath: "circle(0% at 50% 50%)" });
   gsap.set(".btn", { scale: 0 });
@@ -82,7 +84,7 @@ document.fonts.ready.then(() => {
         duration: 1,
         ease: "power4.inOut",
       },
-      "0.25",
+      "0.25"
     )
     .add(animateProgress(), "<")
     .set(".preloader-progress", { backgroundColor: "var(--base-300)" })
@@ -94,7 +96,7 @@ document.fonts.ready.then(() => {
         duration: 1,
         ease: "power4.inOut",
       },
-      "-=0.5",
+      "-=0.5"
     )
     .to(
       splits.footerLines.lines,
@@ -104,7 +106,7 @@ document.fonts.ready.then(() => {
         duration: 1,
         ease: "power4.inOut",
       },
-      "<",
+      "<"
     )
     .to(
       ".preloader-progress",
@@ -113,7 +115,7 @@ document.fonts.ready.then(() => {
         duration: 0.5,
         ease: "power3.out",
       },
-      "-=0.25",
+      "-=0.25"
     )
     .to(
       ".preloader-mask",
@@ -122,7 +124,7 @@ document.fonts.ready.then(() => {
         duration: 2.5,
         ease: "power3.out",
       },
-      "<",
+      "<"
     )
     .to(
       ".hero-img",
@@ -131,7 +133,7 @@ document.fonts.ready.then(() => {
         duration: 1.5,
         ease: "power3.out",
       },
-      "<",
+      "<"
     )
     .to(splits.headerChars.chars, {
       y: 0,
@@ -148,7 +150,7 @@ document.fonts.ready.then(() => {
         duration: 1,
         ease: "power4.out",
       },
-      "-=1.5",
+      "-=1.5"
     )
     .to(
       ".btn",
@@ -170,6 +172,6 @@ document.fonts.ready.then(() => {
           });
         },
       },
-      "<",
+      "<"
     );
 });
