@@ -102,46 +102,6 @@ document.fonts.ready.then(() => {
         duration: 1,
         ease: "power4.inOut",
       },
-      "-=0.5",
-    )
-    .to(
-      splits.headerChars.chars,
-      {
-        y: "0%",
-        stagger: 0.05,
-        duration: 1,
-        ease: "power4.inOut",
-      },
-      "-=0.5",
-    )
-    .to(
-      splits.heroFooterH3.lines,
-      {
-        y: "0%",
-        stagger: 0.1,
-        duration: 1,
-        ease: "power4.inOut",
-      },
-      "-=0.5",
-    )
-    .to(
-      splits.heroFooterP.lines,
-      {
-        y: "0%",
-        stagger: 0.1,
-        duration: 1,
-        ease: "power4.inOut",
-      },
-      "-=0.5",
-    )
-    .to(
-      splits.btnLabels.lines,
-      {
-        y: "-100%",
-        stagger: 0.1,
-        duration: 1,
-        ease: "power4.inOut",
-      },
       "<",
     )
     .to(
@@ -149,7 +109,7 @@ document.fonts.ready.then(() => {
       {
         opacity: 0,
         duration: 0.5,
-        ease: "power3.Out",
+        ease: "power3.out",
       },
       "-=0.25",
     )
@@ -162,9 +122,18 @@ document.fonts.ready.then(() => {
       },
       "<",
     )
-    .to(splits.headerChars.Chars, {
+    .to(
+      ".hero-img",
+      {
+        scale: 1,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "<",
+    )
+    .to(Splits.headerChars.chars, {
       y: 0,
-      stagger: 0.05,
+      stagger: 0.5,
       duration: 1,
       ease: "power4.out",
       delay: -2,
@@ -175,8 +144,30 @@ document.fonts.ready.then(() => {
         y: 0,
         stagger: 0.1,
         duration: 1,
-        ease: "power4.Out",
+        ease: "power4.out",
       },
       "-=1.5",
+    )
+    .to(
+      ".btn",
+      {
+        scale: 1,
+        duration: 1,
+        ease: "power4.out",
+        onStart: () => {
+          tl.to(".btn-icon", {
+            clipPath: "circle(100% at 50% 50%)",
+            duration: 1,
+            ease: "power2.out",
+            delay: -1.25,
+          }).to(splits.btnLabels.lines, {
+            y: 0,
+            duration: 1,
+            ease: "power4.out",
+            delay: -1.25,
+          });
+        },
+      },
+      "<",
     );
 });
