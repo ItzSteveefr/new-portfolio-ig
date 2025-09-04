@@ -1,3 +1,5 @@
+console.log("gsap loaded successfully")
+
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 
