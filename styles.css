@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Host+grotesk:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
     --base-100: #181717;
@@ -60,19 +60,6 @@ img {
     color: var(--base-300);
 }
 
-.contact-btn {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-}
-
-.menu-btn {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .header h1 {
     font-size: 12rem;
     font-weight: 500;
@@ -104,6 +91,19 @@ img {
     opacity: 0.5;
 }
 
+.contact-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.menu-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .btn {
     position: relative;
     display: flex;
@@ -128,6 +128,12 @@ img {
     border-radius: 100%;
 }
 
+.btn-label span {
+    font-size: 0.9rem;
+    font-weight: 450;
+    line-height: 1;
+}
+
 .preloader-progress,
 .preloader-mask,
 .preloader-content {
@@ -137,12 +143,6 @@ img {
     width: 100%;
     height: 100svh;
     pointer-events: none;
-}
-
-.btn-label span {
-    font-size: 0.9rem;
-    font-weight: 450;
-    line-height: 1;
 }
 
 .preloader-progress {
@@ -184,9 +184,8 @@ img {
 
 .preload-mask {
     background-color: var(--base-100);
-    background:
-        linear-gradient(var(--base-300), var(--base-300)),
-        url("mask.svg") center/50% no-repeat;
+    mask: linear-gradient(var(--base-300), var(--base-300)),
+      url("/mask.svg") center/50% no-repeat;
     mask-composite: subtract;
     will-change: transform;
     z-index: 1;
@@ -268,8 +267,7 @@ img {
     }
 
     .preloader-mask {
-        mask:
-            linear-gradient(var(--base-300), var(--base-300)),
+        mask: linear-gradient(var(--base-300), var(--base-300)),
             url("/mask.svg") center/90% no-repeat;
         mask-composite: subtract;
     }
@@ -278,3 +276,4 @@ img {
         width: 75%;
     }
 }
+
