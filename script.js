@@ -83,7 +83,7 @@ document.fonts.ready.then(() => {
       "0.25",
     )
     .add(animateProgress(), "<")
-    .set(".preloader-progress", { BackgroundColor: "var(--base-300)" })
+    .set(".preloader-progress", { backgroundColor: "var(--base-300)" })
     .to(
       splits.logoChars.chars,
       {
@@ -131,7 +131,7 @@ document.fonts.ready.then(() => {
       },
       "<",
     )
-    .to(Splits.headerChars.chars, {
+    .to(splits.headerChars.chars, {
       y: 0,
       stagger: 0.5,
       duration: 1,
