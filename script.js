@@ -1,7 +1,7 @@
 console.log("script.js is loaded ✅");
 
-import gsap from "gsap";
-import SplitText from "gsap/SplitText";
+/*import gsap from "gsap";
+import SplitText from "gsap/SplitText";*/
 
 gsap.registerPlugin(SplitText);
 
